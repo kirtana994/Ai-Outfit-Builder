@@ -1,4 +1,7 @@
+import "../styles/Hero.css";
+import { useNavigate } from "react-router-dom";
 function Hero() {
+    const navigate = useNavigate();
     return (
         <section className="hero">
             <div className="hero-content">
@@ -14,7 +17,7 @@ function Hero() {
                 </p>
 
                 <div className="buttons">
-                    <button className="primary-btn">Start Styling</button>
+                    <button className="primary-btn" onClick={() => navigate("/occasion")}>Start Styling</button>
                     <button className="secondary-btn">
                         View Recommendations
                     </button>

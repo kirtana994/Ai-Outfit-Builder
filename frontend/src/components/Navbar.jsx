@@ -1,14 +1,31 @@
+import { NavLink } from "react-router-dom";
 import "../styles/Navbar.css";
+
 function Navbar() {
     return (
         <nav className="navbar">
-            <div className="logo">StyleAI</div>
+            <NavLink to="/" className="logo">
+                StyleAI
+            </NavLink>
 
             <div className="nav-links">
-                <a className="active">Home</a>
-                <a>Upload</a>
-                <a>Recommendations</a>
-                <a>History</a>
+                <NavLink
+                    to="/"
+                    className={({ isActive }) => isActive ? "active" : ""}
+                >
+                    Home
+                </NavLink>
+
+                <NavLink
+                    to="/occasion"
+                    className={({ isActive }) => isActive ? "active" : ""}
+                >
+                    Occasion
+                </NavLink>
+
+                {/*<NavLink to="#">Upload</NavLink>
+                <NavLink to="#">Recommendations</NavLink>
+                <NavLink to="#">History</NavLink>*/}
             </div>
         </nav>
     );

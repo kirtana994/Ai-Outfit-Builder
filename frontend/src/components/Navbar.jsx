@@ -5,7 +5,7 @@ function Navbar() {
     return (
         <nav className="navbar">
             <NavLink to="/" className="logo">
-                StyleAI
+                <img src="/images/logo.png" alt="StyleAI Logo" className="logo-img" />
             </NavLink>
 
             <div className="nav-links">

@@ -1,6 +1,30 @@
+import { useState } from "react";
 import "../styles/ChooseOccasion.css";
 
 function ChooseOccasion() {
+
+    const [userInput, setUserInput] = useState("");
+    const [image, setImage] = useState(null);
+    const [explanation, setExplanation] = useState("");
+
+    const generateOutfit = async () => {
+
+        const response = await fetch("http://localhost:5000/generate", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                prompt: userInput,
+            }),
+        });
+
+        const data = await response.json();
+
+        setImage(`data:image/png;base64,${data.image}`);
+        setExplanation(data.explanation);
+    };
+
     return (
         <section className="occasion-section">
             <h2>Choose Your Occasion</h2>
@@ -32,9 +56,18 @@ function ChooseOccasion() {
                 <input
                     type="text"
                     placeholder="Describe your desired outfit style..."
+                    value={userInput}
+                    onChange={(e) => setUserInput(e.target.value)}
                 />
-                <button>Generate</button>
+                <button onClick={generateOutfit}>Generate</button>
             </div>
+
+            {image && (
+                <div className="result-section">
+                    <img src={image} alt="Generated Outfit" />
+                    <p>{explanation}</p>
+                </div>
+            )}
         </section>
     );
 }

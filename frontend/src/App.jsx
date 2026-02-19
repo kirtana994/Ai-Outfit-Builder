@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import ChooseOccasion from "./components/ChooseOccasion";
 
+
 function App() {
   return (
     <>
